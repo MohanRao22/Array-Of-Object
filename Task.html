@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Routing</title>
+</head>
+
+<body>
+
+
+    <script>
+        var input = [{
+            "id": 1,
+            "title": "Title 1",
+            "childrens": [{
+                "id": 2,
+                "title": "Title 2",
+                "childrens": []
+            }]
+        }, {
+            "id": 3,
+            "title": "Title 3",
+            "childrens": [{
+                "id": 4,
+                "title": "Title 4",
+                "childrens": [{
+                    "id": 5,
+                    "title": "Title 5",
+                    "childrens": []
+                }]
+            }]
+        }];
+
+
+        // console.log(input[0].childrens[0].title);
+
+        var newArr = [];
+
+        function recursion(inp) {
+            //console.log(inp);
+
+            var newObj = {};
+            newObj.id = inp.id;
+            newObj.title = inp.title;
+            newObj.childrens = [];
+            newArr.push(newObj);
+            console.log(newArr);
+            inp.childrens.forEach((e) => {
+                recursion(e);
+            });
+
+
+
+        }
+
+
+        for (let i = 0; i < input.length; i++) {
+            // console.log(input[i]);
+            recursion(input[i]);
+        }
+
+
+
+
+
+
+        // var output = [];
+        // // [{}]
+
+        // function rec(obj) {
+        //     var res = {};
+        //     res.id = obj.id;
+        //     res.title = obj.title;
+        //     res.childrens = [];
+        //     console.log(obj.childrens.length);
+        //     if (obj.childrens.length > 0) {
+        //         // rec(obj);
+        //     }
+        //     console.log(res);
+        // };
+        // // rec(input[0])
+
+        // for (let i = 0; i < input.length; i++) {
+        //     rec(input[i]);
+        // }
+    </script>
+</body>
+
+</html>
